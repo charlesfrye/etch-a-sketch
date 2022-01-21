@@ -10,7 +10,55 @@ const setupGrid = function(size) {
 
 const colorBlock = function(e) {
   const block = e.target;
-  block.style.backgroundColor = "#000";
+  const initColorString = window.getComputedStyle(block).backgroundColor;
+  const colorArray = getColorArray(initColorString);
+  update(colorArray);
+  const colorString = fromColorArray(colorArray)
+  console.log(colorString);
+  block.style.backgroundColor = colorString;
+}
+
+const getColorArray = function(colorString) {
+  if (!colorString.startsWith("rgb")) {
+    throw Error(`invalid colorString ${colorString}`);
+  };
+
+  const prefix = colorString.slice(0, 4);
+  let start = null;
+  if (prefix === "rgb(") {
+    start = 4;
+  } else if (prefix === "rgba") {
+    start = 5;
+  } else {
+    throw Error(`invalid colorString ${colorString}`);
+  }
+
+  colorString = colorString.slice(start, -1); // drop function call
+  const colorArray = colorString.split(",").map(parseFloat);
+
+  if (prefix === "rgb(") {
+    colorArray[3] = 1;
+  };
+  return colorArray;
+};
+
+const update = function(colorArray) {
+  console.log(colorArray);
+  console.log(colorArray[3]);
+  console.log(colorArray[3] + 0.1);
+  colorArray[3] = Math.min(1, colorArray[3] + 0.1);
+};
+
+const fromColorArray = function (colorArray) {
+  if (!colorArray.length === 4) {
+    throw Error(`invalid colorArray ${colorArray}`);
+  };
+  let colorString = "rgba";
+
+  const commaSepColors = colorArray.join();
+  colorString += `(${commaSepColors})`;
+
+  return colorString;
 }
 
 const clearGrid = function() {
