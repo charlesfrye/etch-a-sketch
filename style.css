@@ -1,0 +1,86 @@
+html,
+body {
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: #0e1111;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.sketchpad {
+  flex: 1;
+  background-color: #ff0800;
+  width: 100%;
+  height: 100%;
+  border-radius: 10%;
+  border: ridge #232b2b 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.canvas {
+  height: 80%;
+  width: 80%;
+  margin-top: 10%;
+  background-color: antiquewhite;
+  border-radius: 5%;
+}
+
+.block-grid {
+  padding: 5%;
+  height: 90%;
+  width: 90%;
+  display: flex;
+}
+
+.block-grid > .column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.block {
+  flex: 1;
+}
+
+.controls {
+  height: 10%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controls button {
+  padding: 4px;
+  font-size: 32px;
+}
+
+#foot {
+  background: #0e1111;
+  flex-shrink: 0;
+  height: 18px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 100;
+  font-family: sans-serif;
+  color: #414a4c;
+}
